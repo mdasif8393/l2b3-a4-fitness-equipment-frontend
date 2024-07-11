@@ -20,7 +20,20 @@ export const baseApi = createApi({
         };
       },
     }),
+    postOrder: builder.mutation({
+      query: (data) => {
+        return {
+          url: "/orders",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetSingleProductQuery } = baseApi;
+export const {
+  useGetProductsQuery,
+  useGetSingleProductQuery,
+  usePostOrderMutation,
+} = baseApi;

@@ -6,4 +6,5 @@ export type TProduct = {
   name: string;
   price: number;
   stockQuantity: number;
+  quantity: number;
 };

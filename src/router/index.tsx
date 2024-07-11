@@ -6,6 +6,7 @@ import NotFound from "@/components/NotFound/NotFound";
 import ProductManagement from "@/components/ProductManagement/ProductManagement";
 import Products from "@/components/Products/Products";
 import SingleProduct from "@/components/SingleProduct/SingleProduct";
+import Success from "@/components/Success/Success";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../components/Home/Home";
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "success",
+        element: <Success />,
       },
     ],
   },

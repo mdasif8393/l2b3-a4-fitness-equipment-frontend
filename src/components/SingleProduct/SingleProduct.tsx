@@ -1,6 +1,6 @@
 import { useGetSingleProductQuery } from "@/redux/api/api";
 import { addToCart } from "@/redux/features/cart/cartSlice";
-import { useAppDispatch } from "@/redux/hooks/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { useParams } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import { Button } from "../ui/button";
@@ -18,9 +18,11 @@ const SingleProduct = (params) => {
 
   const { data } = useGetSingleProductQuery(productId);
 
-  console.log(data?.data);
-
   const dispatch = useAppDispatch();
+
+  const { products } = useAppSelector((state) => state.cart);
+
+  const cartProduct = products.find((p) => p._id === productId);
 
   return (
     <div className="flex flex-row">
@@ -43,7 +45,12 @@ const SingleProduct = (params) => {
           <p>Price: TK {data?.data?.price}</p>
         </CardContent>
         <CardFooter>
-          <Button onClick={() => dispatch(addToCart(data?.data))}>
+          <Button
+            disabled={
+              cartProduct && cartProduct?.quantity >= cartProduct?.stockQuantity
+            }
+            onClick={() => dispatch(addToCart(data?.data))}
+          >
             add to cart
           </Button>
         </CardFooter>
