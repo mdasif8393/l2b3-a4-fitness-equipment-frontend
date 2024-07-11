@@ -1,4 +1,5 @@
 import { TProduct } from "@/types/types";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -29,7 +30,9 @@ const ProductDetails = (product: Partial<TProduct>) => {
           <p>TK {product.product.price}</p>
         </CardContent>
         <CardFooter>
-          <Button>add to cart</Button>
+          <Button>
+            <Link to={`/product/${product?.product?._id}`}>See More</Link>
+          </Button>
         </CardFooter>
       </Card>
     </div>

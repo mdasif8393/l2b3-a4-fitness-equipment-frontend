@@ -27,7 +27,6 @@ const Products = () => {
 
   const { data: products } = useGetProductsQuery(query);
 
-  console.log(query);
   return (
     <div>
       <div className="flex justify-center">
