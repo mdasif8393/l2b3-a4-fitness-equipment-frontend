@@ -5,31 +5,55 @@ import ProductDetails from "../ProductDetails/ProductDetails";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
+type TQuery = {
+  searchTerm: string;
+  sort: string;
+};
+
 const Products = () => {
-  const { data: products } = useGetProductsQuery({});
+  const query: Partial<TQuery> = {};
 
-  const [searchData, setSearchData] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(searchData);
-  };
+  query.searchTerm = searchTerm;
 
+  const [togglePriceChange, setTogglePriceChange] = useState(false);
+
+  if (togglePriceChange) {
+    query.sort = "-price";
+  } else {
+    query.sort = "price";
+  }
+
+  const { data: products } = useGetProductsQuery(query);
+
+  console.log(query);
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex justify-center">
+      <div className="flex justify-center">
         <Input
-          onBlur={(e) => setSearchData(e.target.value)}
+          onBlur={(e) => setSearchTerm(e.target.value)}
           type="text"
           placeholder="Search Products"
           className="w-1/2"
         />
-        <Button type="submit">Search</Button>
-      </form>
-      <div className="grid md:grid-cols-4 sm:grid-cols-1 gap-3">
-        {products?.data.map((product: TProduct) => (
-          <ProductDetails product={product} key={product._id} />
-        ))}
+        <Button>Search</Button>
+      </div>
+      <div className="flex flex-row">
+        <div className="basis-1/5">
+          <input
+            type="checkbox"
+            id="price"
+            name="price"
+            onChange={() => setTogglePriceChange(!togglePriceChange)}
+          />
+          <label htmlFor="price"> Price Higher to Lower</label>
+        </div>
+        <div className="grid md:grid-cols-4 sm:grid-cols-1 gap-3">
+          {products?.data.map((product: TProduct) => (
+            <ProductDetails product={product} key={product._id} />
+          ))}
+        </div>
       </div>
     </div>
   );
