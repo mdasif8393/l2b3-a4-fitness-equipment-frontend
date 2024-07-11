@@ -18,9 +18,7 @@ import { Input } from "../ui/input";
 const Checkout = () => {
   const navigate = useNavigate();
 
-  const { products: cartItems, total } = useAppSelector((state) => state.cart);
-
-  const { products } = useAppSelector((state) => state.cart);
+  const { products, total } = useAppSelector((state) => state.cart);
 
   const [user, setUser] = useState({});
 
@@ -30,6 +28,7 @@ const Checkout = () => {
     e.preventDefault();
     user.products = products;
     postOrder(user);
+
     navigate("/success");
   };
   return (
@@ -65,10 +64,10 @@ const Checkout = () => {
       </div>
       <div>
         <div>
-          {cartItems.length > 0 && <p>Total Price: TK {total}</p>}
+          {products.length > 0 && <p>Total Price: TK {total}</p>}
 
           <div>
-            {cartItems.map((product) => (
+            {products.map((product) => (
               <CartDetails product={product} key={product._id} />
             ))}
           </div>
