@@ -36,6 +36,15 @@ export const baseApi = createApi({
         };
       },
     }),
+    updateProduct: builder.mutation({
+      query: (options) => {
+        return {
+          url: `/products/${options?.id}`,
+          method: "PUT",
+          body: options?.data,
+        };
+      },
+    }),
     postOrder: builder.mutation({
       query: (data) => {
         return {
@@ -54,4 +63,5 @@ export const {
   usePostOrderMutation,
   useGetProductsAgainQuery,
   useDeleteProductMutation,
+  useUpdateProductMutation,
 } = baseApi;

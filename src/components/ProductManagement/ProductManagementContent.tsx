@@ -1,4 +1,9 @@
-import { useDeleteProductMutation } from "@/redux/api/api";
+import {
+  useDeleteProductMutation,
+  useUpdateProductMutation,
+} from "@/redux/api/api";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -14,6 +19,8 @@ import {
 import { TableCell, TableRow } from "../ui/table";
 
 const ProductManagementContent = ({ product }) => {
+  const navigate = useNavigate();
+
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleProductDelete = (productId: string) => {
@@ -24,6 +31,44 @@ const ProductManagementContent = ({ product }) => {
     } else {
       toast("Wrong Input");
     }
+  };
+
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    setFormData(product);
+  }, [product]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const [updateData] = useUpdateProductMutation();
+
+  const handleUpdateFormSubmit = (e) => {
+    e.preventDefault();
+    const typeChangeFormData = {
+      name: formData?.name,
+      price: Number(formData?.price),
+      stockQuantity: Number(formData?.stockQuantity),
+      description: formData?.description,
+      image: formData?.image,
+      category: formData?.category,
+    };
+
+    const options = {
+      id: product?._id,
+      data: typeChangeFormData,
+    };
+
+    updateData(options);
+
+    toast.success("product updated successfully");
   };
 
   return (
@@ -46,14 +91,15 @@ const ProductManagementContent = ({ product }) => {
             <SheetHeader>
               <SheetTitle>Update Information of {product?.name}</SheetTitle>
               <SheetDescription>
-                <form>
+                <form onSubmit={handleUpdateFormSubmit}>
                   <Label htmlFor="name">Product Name</Label>
                   <Input
                     type="text"
                     placeholder="Product Name"
                     id="name"
                     name="name"
-                    defaultValue={product?.name}
+                    defaultValue={product?.name || ""}
+                    onChange={handleChange}
                   />
                   <Label htmlFor="price">Product Price</Label>
                   <Input
@@ -61,23 +107,26 @@ const ProductManagementContent = ({ product }) => {
                     placeholder="Product Price"
                     id="price"
                     name="price"
-                    defaultValue={product?.price}
+                    defaultValue={product?.price || ""}
+                    onChange={handleChange}
                   />
-                  <Label htmlFor="stock">Product Stock</Label>
+                  <Label htmlFor="stockQuantity">Product Stock</Label>
                   <Input
                     type="number"
                     placeholder="Product Stock"
-                    id="stock"
-                    name="stock"
-                    defaultValue={product?.stockQuantity}
+                    id="stockQuantity"
+                    name="stockQuantity"
+                    defaultValue={product?.stockQuantity || ""}
+                    onChange={handleChange}
                   />
-                  <Label htmlFor="stock">Product Description</Label>
+                  <Label htmlFor="description">Product Description</Label>
                   <Input
                     type="string"
                     placeholder="Product Description"
                     id="description"
                     name="description"
-                    defaultValue={product?.description}
+                    defaultValue={product?.description || ""}
+                    onChange={handleChange}
                   />
                   <Label htmlFor="stock">Product Image</Label>
                   <Input
@@ -85,7 +134,8 @@ const ProductManagementContent = ({ product }) => {
                     placeholder="Product Image"
                     id="image"
                     name="image"
-                    defaultValue={product?.image}
+                    defaultValue={product?.image || ""}
+                    onChange={handleChange}
                   />
                   <Label htmlFor="stock">Product Category</Label>
                   <Input
@@ -93,7 +143,8 @@ const ProductManagementContent = ({ product }) => {
                     placeholder="Product Category"
                     id="category"
                     name="category"
-                    defaultValue={product?.category}
+                    defaultValue={product?.category || ""}
+                    onChange={handleChange}
                   />
                   <br />
                   <Button type="submit" className="w-full">
