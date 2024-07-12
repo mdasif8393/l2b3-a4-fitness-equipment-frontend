@@ -1,6 +1,7 @@
 import AboutUs from "@/components/AboutUs/AboutUs";
 import Cart from "@/components/Cart/Cart";
 import Checkout from "@/components/Checkout/Checkout";
+import CategoryProducts from "@/components/Home/CategoryProducts";
 import MainLayout from "@/components/Layouts/MainLayout";
 import NotFound from "@/components/NotFound/NotFound";
 import ProductManagement from "@/components/ProductManagement/ProductManagement";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "success",
         element: <Success />,
+      },
+      {
+        path: "category-products/:category",
+        element: <CategoryProducts />,
       },
     ],
   },
