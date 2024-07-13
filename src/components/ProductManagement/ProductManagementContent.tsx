@@ -31,7 +31,14 @@ const ProductManagementContent = ({ product }: any) => {
     }
   };
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    price: 0,
+    stockQuantity: 0,
+    description: "",
+    image: "",
+    category: "",
+  });
 
   useEffect(() => {
     setFormData(product);

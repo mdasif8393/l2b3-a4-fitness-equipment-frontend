@@ -23,7 +23,7 @@ const SingleProduct = () => {
 
   const { products } = useAppSelector((state) => state.cart);
 
-  const cartProduct = products.find((p) => p._id === productId);
+  const cartProduct = products.find((p: any) => p._id === productId);
 
   return (
     <div className="my-10 grid lg:grid-cols-3 md:grid-cols-2 gap-4 sm:grid-cols-1 px-6">

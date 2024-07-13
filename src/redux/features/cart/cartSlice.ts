@@ -1,12 +1,6 @@
-import { TProduct } from "@/types/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type TCart = {
-  products: TProduct[];
-  total: number;
-};
-
-const initialState: TCart = {
+const initialState: any = {
   products: [],
   total: 0,
 };
@@ -15,9 +9,9 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<TProduct>) => {
+    addToCart: (state, action: PayloadAction<any>) => {
       const existingProduct = state.products.find(
-        (product) => product._id === action.payload._id
+        (product: any) => product._id === action.payload._id
       );
 
       if (existingProduct) {
@@ -27,15 +21,15 @@ export const cartSlice = createSlice({
       }
       state.total += action.payload.price;
     },
-    removeFromCart: (state, action: PayloadAction<TProduct>) => {
+    removeFromCart: (state, action: PayloadAction<any>) => {
       const existingProduct = state.products.find(
-        (product) => product._id === action.payload._id
+        (product: any) => product._id === action.payload._id
       );
       if (existingProduct && existingProduct?.quantity > 1) {
         existingProduct.quantity -= 1;
       } else {
         state.products = state.products.filter(
-          (product) => product._id !== action.payload._id
+          (product: any) => product._id !== action.payload._id
         );
       }
       state.total -= action.payload.price;

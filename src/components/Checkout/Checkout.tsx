@@ -11,20 +11,18 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
-// type TUser = {
-//   name: string;
-//   email: string;
-//   number: number;
-//   address: string;
-//   products: TProduct[];
-// };
-
 const Checkout = () => {
   const navigate = useNavigate();
 
   const { products, total } = useAppSelector((state) => state.cart);
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    number: "",
+    address: "",
+    products: [],
+  });
 
   const [postOrder, { isLoading }] = usePostOrderMutation();
 
@@ -98,7 +96,7 @@ const Checkout = () => {
           )}
 
           <div>
-            {products.map((product) => (
+            {products.map((product: any) => (
               <CartDetails product={product} key={product._id} />
             ))}
           </div>

@@ -16,7 +16,7 @@ const Cart = () => {
       )}
 
       <div>
-        {products.map((product) => (
+        {products.map((product: any) => (
           <CartDetails product={product} key={product._id} />
         ))}
       </div>
