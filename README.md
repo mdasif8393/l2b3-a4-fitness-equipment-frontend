@@ -1,31 +1,48 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>Fitness Equipment Project Frontend</h1>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# GYM Tools Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+This project is a Fitness Equipment selling website.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Description
 
-- Configure the top-level `parserOptions` property like this:
+This project is for selling fitness equipment products through this website. From this website Buyer can buy fitness equipment products through cash on delivery. The Landing page is designed with Banner, different categorize products, Features Products, rating of users, navbar and footer. User can add products to cart and can increase and decrese cart item. Products page is designed to show products. in product management page user can add, delete, update a product. In checkout page used have to submit his/her details to place order.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Features
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-"# l2b3-a4-fitness-equipment-frontend" 
+- Search Products
+- Sort Price.
+- Add Product
+- Delete Product
+- Update Product
+- add to cart
+
+## Technology Stack
+
+- TypeScript.
+- React.
+- Redux
+- Tailwind CSS
+- ShadCn
+
+## Installation Guideline
+
+- npm install to install all packages
+- npm run dev to run project locally
+- npm run build to build project
+
+### Prerequisites
+
+- Vs Code
+
+### Installation Steps
+
+1. npm install to install all packages
+2. npm run dev to run project locally
+3. npm run build to build project
