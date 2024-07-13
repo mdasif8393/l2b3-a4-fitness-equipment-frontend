@@ -10,9 +10,9 @@ import {
 
 const ProductCategoryShowcase = () => {
   return (
-    <Carousel>
+    <Carousel className="mt-20">
       <CarouselContent>
-        <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+        <CarouselItem className="md:basis-1/2 lg:basis-1/3 hover:shadow-2xl">
           <article className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto mt-24">
             <img
               src="https://i0.wp.com/www.oma-fitness.com/uploads/S20/22.jpg?resize=1068%2C801&ssl=1"
@@ -35,7 +35,7 @@ const ProductCategoryShowcase = () => {
             <img
               src="https://raselsports.com/images/products/yzuo41clya11ev8/Oma-3338EA-treadmill-(1).webp"
               alt="University of Southern California"
-              className="absolute inset-0 h-fit w-fit object-cover"
+              className="absolute inset-0 h-fit w-fit object-cover "
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
             <h3 className="z-10 mt-3 text-3xl font-bold text-white">

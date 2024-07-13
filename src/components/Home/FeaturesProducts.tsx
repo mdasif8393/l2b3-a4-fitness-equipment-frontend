@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const FeaturesProducts = () => {
   return (
-    <div className="my-8">
-      <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+    <div className="my-8 mt-24 mb-24">
+      <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl mb-8">
         Features Products
       </h2>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6">
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-2xl">
           <a href="#">
             <img
               className="p-8 rounded-t-lg"
@@ -27,7 +27,7 @@ const FeaturesProducts = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-2xl">
           <a href="#">
             <img
               className="p-8 rounded-t-lg"
@@ -48,7 +48,7 @@ const FeaturesProducts = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-2xl">
           <a href="#">
             <img
               className="p-8 rounded-t-lg"

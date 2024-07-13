@@ -3,18 +3,18 @@ import { Button } from "../ui/button";
 
 const Benefit = () => {
   return (
-    <div>
-      <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+    <div className="">
+      <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl mb-8">
         Benefits to Use Gys Equipments
       </h2>
       {/* 1st div */}
       <div></div>
-      <div className="grid md:grid-cols-2 sm:grid-cols-1">
+      <div className="grid md:grid-cols-2 sm:grid-cols-1 relative overflow-hidden bg-no-repeat">
         <div>
           <img
             src="https://www.eatthis.com/wp-content/uploads/sites/4/2022/05/fit-man-treadmill-workout.jpg?quality=82&strip=1&w=640"
             alt=""
-            className="object-contain w-full"
+            className="object-contain w-full transition duration-300 ease-in-out hover:scale-110"
           />
         </div>
         <div className="flex justify-center items-center mx-4">
@@ -30,8 +30,8 @@ const Benefit = () => {
         </div>
       </div>
       {/* 2nd div */}
-      <div className="grid lg:grid-cols-2 sm:grid-cols-1 ">
-        <div className="flex justify-center items-center mx-4">
+      <div className="grid lg:grid-cols-2 sm:grid-cols-1 mt-2">
+        <div className="flex justify-center items-center mx-4 relative overflow-hidden bg-no-repeat">
           <div>
             <h1 className="text-4xl ">Technogym Elliptical</h1>
             <h3 className="text-2xl my-2">
@@ -46,7 +46,7 @@ const Benefit = () => {
           <img
             src="https://res.cloudinary.com/iconfitness/image/upload/dpr_auto,f_auto,fl_progressive.lossy,q_auto,w_auto/v1/site--1/NTEL71423_product_detail.png"
             alt=""
-            className="object-contain w-full"
+            className="object-contain w-full transition duration-300 ease-in-out hover:scale-110"
           />
         </div>
       </div>

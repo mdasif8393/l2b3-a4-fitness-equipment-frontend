@@ -13,7 +13,7 @@ const UserReviews = () => {
           </div>
 
           <div className="md:columns-2 lg:columns-3 gap-8 space-y-8">
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
@@ -40,7 +40,7 @@ const UserReviews = () => {
               </p>
             </div>
 
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
@@ -69,7 +69,7 @@ const UserReviews = () => {
               </p>
             </div>
 
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
@@ -96,7 +96,7 @@ const UserReviews = () => {
               </p>
             </div>
 
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
@@ -124,7 +124,7 @@ const UserReviews = () => {
               </p>
             </div>
 
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
@@ -153,7 +153,7 @@ const UserReviews = () => {
               </p>
             </div>
 
-            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
+            <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none hover:shadow-2xl">
               <div className="flex gap-4">
                 <img
                   className="w-12 h-12 rounded-full"
