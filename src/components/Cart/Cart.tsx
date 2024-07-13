@@ -8,7 +8,12 @@ const Cart = () => {
 
   return (
     <div>
-      {products.length > 0 && <p>Total Price: TK {total}</p>}
+      {products.length > 0 && (
+        <p className="text-lg">
+          Total Price:{" "}
+          <span className="font-semibold text-gray-950">TK {total}</span>
+        </p>
+      )}
 
       <div>
         {products.map((product) => (

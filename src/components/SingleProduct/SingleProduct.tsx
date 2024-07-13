@@ -2,6 +2,7 @@ import { useGetSingleProductQuery } from "@/redux/api/api";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 import Cart from "../Cart/Cart";
 import { Button } from "../ui/button";
 import {
@@ -13,7 +14,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
-const SingleProduct = (params) => {
+const SingleProduct = () => {
   const { productId } = useParams();
 
   const { data } = useGetSingleProductQuery(productId);
@@ -25,7 +26,7 @@ const SingleProduct = (params) => {
   const cartProduct = products.find((p) => p._id === productId);
 
   return (
-    <div className="flex flex-row">
+    <div className="my-10 grid lg:grid-cols-3 md:grid-cols-2 gap-4 sm:grid-cols-1 px-6">
       <div className="basis-1/4">
         <img
           className="object-contain max-w-lg"
@@ -42,14 +43,22 @@ const SingleProduct = (params) => {
           <p>Category: {data?.data?.category}</p>
         </CardContent>
         <CardContent>
-          <p>Price: TK {data?.data?.price}</p>
+          <p>
+            Price:{" "}
+            <span className="text-gray-900 font-semibold">
+              TK {data?.data?.price}
+            </span>
+          </p>
         </CardContent>
         <CardFooter>
           <Button
             disabled={
               cartProduct && cartProduct?.quantity >= cartProduct?.stockQuantity
             }
-            onClick={() => dispatch(addToCart(data?.data))}
+            onClick={() => {
+              dispatch(addToCart(data?.data));
+              toast.success("product is added to cart");
+            }}
           >
             add to cart
           </Button>

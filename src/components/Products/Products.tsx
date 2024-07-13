@@ -2,6 +2,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { TProduct } from "@/types/types";
 import Spinner from "@/utils/Spinner";
 import { useState } from "react";
+import { toast } from "sonner";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -12,7 +13,7 @@ import { Input } from "../ui/input";
 // };
 
 const Products = () => {
-  let query: any = {};
+  const query: any = {};
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -26,21 +27,19 @@ const Products = () => {
     query.sort = "price";
   }
 
-  const handleClearQuery = () => {
-    query = {};
-  };
-
   const { data: products, isLoading } = useGetProductsQuery(query);
 
   if (isLoading) {
-    <Spinner />;
+    return <Spinner />;
   }
 
   return (
     <div className="my-4 p-4">
       <div className="flex justify-center mb-4">
         <Input
-          onBlur={(e) => setSearchTerm(e.target.value)}
+          onBlur={(e) => {
+            setSearchTerm(e.target.value);
+          }}
           type="text"
           placeholder="Search your chosen products"
           className="w-1/2"
@@ -52,11 +51,14 @@ const Products = () => {
           type="checkbox"
           id="price"
           name="price"
-          onChange={() => setTogglePriceChange(!togglePriceChange)}
+          onChange={() => {
+            setTogglePriceChange(!togglePriceChange);
+            toast.success("Successfully showed filter's data");
+          }}
         />
-        <label htmlFor="price" className="ms-2">
+        <label htmlFor="price" className="ms-2 font-semibold">
           {" "}
-          Price from Higher to Lower
+          Filter Price from Higher to Lower
         </label>
       </div>
 

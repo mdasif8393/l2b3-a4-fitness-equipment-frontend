@@ -32,6 +32,9 @@ const Navbar = () => {
               <Link to="/products">Products</Link>
             </NavigationMenuLink>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              <Link to="/about">About US</Link>
+            </NavigationMenuLink>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <Link to="/product-management">Product Management</Link>
             </NavigationMenuLink>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

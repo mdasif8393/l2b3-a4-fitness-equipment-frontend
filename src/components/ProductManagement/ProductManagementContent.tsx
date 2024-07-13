@@ -1,9 +1,9 @@
 import {
+  useAddProductMutation,
   useDeleteProductMutation,
   useUpdateProductMutation,
 } from "@/redux/api/api";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -18,9 +18,7 @@ import {
 } from "../ui/sheet";
 import { TableCell, TableRow } from "../ui/table";
 
-const ProductManagementContent = ({ product }) => {
-  const navigate = useNavigate();
-
+const ProductManagementContent = ({ product }: any) => {
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleProductDelete = (productId: string) => {
@@ -39,7 +37,7 @@ const ProductManagementContent = ({ product }) => {
     setFormData(product);
   }, [product]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({
@@ -50,7 +48,7 @@ const ProductManagementContent = ({ product }) => {
 
   const [updateData] = useUpdateProductMutation();
 
-  const handleUpdateFormSubmit = (e) => {
+  const handleUpdateFormSubmit = (e: any) => {
     e.preventDefault();
     const typeChangeFormData = {
       name: formData?.name,
@@ -71,12 +69,127 @@ const ProductManagementContent = ({ product }) => {
     toast.success("product updated successfully");
   };
 
+  const [productInfo, setProductInfo] = useState({
+    name: "",
+    price: 0,
+    stockQuantity: 0,
+    description: "",
+    image: "",
+    category: "",
+  });
+
+  const [addProduct] = useAddProductMutation();
+
+  const handleProductSubmit = (e: any) => {
+    e.preventDefault();
+    addProduct(productInfo);
+    toast.success("product added successfully");
+  };
+
   return (
     <TableRow key={product?._id}>
+      <TableCell>
+        {" "}
+        <img className="h-12 w-12" src={product?.image} alt="" />{" "}
+      </TableCell>
       <TableCell>{product?.name}</TableCell>
       <TableCell>TK {product?.price}</TableCell>
       <TableCell>{product?.category}</TableCell>
       <TableCell>
+        {/* ADD Product */}
+        <Sheet>
+          <SheetTrigger className="mr-1">
+            <Button className="bg-slate-600 ms-1">Add Product</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Add Product Information</SheetTitle>
+              <SheetDescription>
+                <form onSubmit={handleProductSubmit}>
+                  <Label htmlFor="name">Product Name</Label>
+                  <Input
+                    type="text"
+                    placeholder="Product Name"
+                    id="name"
+                    name="name"
+                    onBlur={(e) =>
+                      setProductInfo({ ...productInfo, name: e.target.value })
+                    }
+                  />
+                  <Label htmlFor="price">Product Price</Label>
+                  <Input
+                    type="number"
+                    placeholder="Product Price"
+                    id="price"
+                    name="price"
+                    onBlur={(e) =>
+                      setProductInfo({
+                        ...productInfo,
+                        price: Number(e.target.value),
+                      })
+                    }
+                  />
+                  <Label htmlFor="stockQuantity">Stock Quantity</Label>
+                  <Input
+                    type="number"
+                    placeholder="Product Stock"
+                    id="stockQuantity"
+                    name="stockQuantity"
+                    onBlur={(e) =>
+                      setProductInfo({
+                        ...productInfo,
+                        stockQuantity: Number(e.target.value),
+                      })
+                    }
+                  />
+                  <Label htmlFor="description">Product Description</Label>
+                  <Input
+                    type="string"
+                    placeholder="Product Description"
+                    id="description"
+                    name="description"
+                    onBlur={(e) =>
+                      setProductInfo({
+                        ...productInfo,
+                        description: e.target.value,
+                      })
+                    }
+                  />
+                  <Label htmlFor="stock">Product Image</Label>
+                  <Input
+                    type="string"
+                    placeholder="Product Image"
+                    id="image"
+                    name="image"
+                    onBlur={(e) =>
+                      setProductInfo({
+                        ...productInfo,
+                        image: e.target.value,
+                      })
+                    }
+                  />
+                  <Label htmlFor="stock">Product Category</Label>
+                  <Input
+                    type="string"
+                    placeholder="Product Category"
+                    id="category"
+                    name="category"
+                    onBlur={(e) =>
+                      setProductInfo({
+                        ...productInfo,
+                        category: e.target.value,
+                      })
+                    }
+                  />
+                  <br />
+                  <Button type="submit" className="w-full">
+                    Add Product
+                  </Button>
+                </form>
+              </SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
         <Button
           variant="destructive"
           onClick={() => handleProductDelete(product?._id)}
@@ -85,7 +198,7 @@ const ProductManagementContent = ({ product }) => {
         </Button>
         <Sheet>
           <SheetTrigger>
-            <Button className="bg-slate-600">Update</Button>
+            <Button className="bg-slate-600 ms-1">Update</Button>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>

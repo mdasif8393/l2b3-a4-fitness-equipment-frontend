@@ -50,6 +50,16 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["Get1", "Get2"],
     }),
+    addProduct: builder.mutation({
+      query: (options) => {
+        return {
+          url: "/products",
+          method: "POST",
+          body: options,
+        };
+      },
+      invalidatesTags: ["Get1", "Get2"],
+    }),
     postOrder: builder.mutation({
       query: (data) => {
         return {
@@ -59,7 +69,6 @@ export const baseApi = createApi({
         };
       },
     }),
-    invalidatesTags: ["Get1", "Get2"],
   }),
 });
 
@@ -70,4 +79,5 @@ export const {
   useGetProductsAgainQuery,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useAddProductMutation,
 } = baseApi;
